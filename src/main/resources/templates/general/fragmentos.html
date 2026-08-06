@@ -7,17 +7,39 @@
 <head th:fragment="head">
     <title>TechShop</title>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16x16.png"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32x32.png"/>
-    <link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96x96.png"/>
-    <link rel="icon" type="image/png" sizes="256x256" href="/fav/favicon-256x256.png"/>
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          th:href="@{/fav/favicon-16x16.png}"/>
 
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          th:href="@{/fav/favicon-32x32.png}"/>
+
+    <link rel="icon"
+          type="image/png"
+          sizes="96x96"
+          th:href="@{/fav/favicon-96x96.png}"/>
+
+    <link rel="icon"
+          type="image/png"
+          sizes="256x256"
+          th:href="@{/fav/favicon-256x256.png}"/>
+
+    <link th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+
+    <link th:href="@{/webjars/font-awesome/6.7.2/css/all.min.css}"
+          rel="stylesheet"/>
+
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+
+    <script th:src="@{/webjars/popper.js/2.11.7/umd/popper.min.js}"></script>
+
+    <script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js}"></script>
 </head>
 
 <!-- Fragmento #2 define el encabezado de las páginas -->
