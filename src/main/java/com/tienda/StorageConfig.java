@@ -29,10 +29,8 @@ public class StorageConfig {
         InputStream inputStream;
 
         if (renderSecret.exists()) {
-            // Render
             inputStream = new FileInputStream(renderSecret);
         } else {
-            // Ejecución local en NetBeans
             ClassPathResource resource =
                     new ClassPathResource(jsonPath + File.separator + jsonFile);
 
