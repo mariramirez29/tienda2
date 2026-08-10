@@ -35,7 +35,6 @@ public class ProductoController {
 
     @GetMapping("/listado")
     public String listado(Model model) {
-
         var productos = productoService.getProductos(false);
         model.addAttribute("productos", productos);
 
