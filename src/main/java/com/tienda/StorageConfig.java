@@ -4,6 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,11 +23,28 @@ public class StorageConfig {
 
     @Bean
     public Storage storage() throws IOException {
-        ClassPathResource resource = new ClassPathResource(jsonPath + File.separator + jsonFile);
-        try (InputStream inputStream = resource.getInputStream()) {
-            GoogleCredentials credentials = GoogleCredentials.fromStream(inputStream);
-            return StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+
+        File renderSecret = new File("/etc/secrets/" + jsonFile);
+
+        InputStream inputStream;
+
+        if (renderSecret.exists()) {
+            inputStream = new FileInputStream(renderSecret);
+        } else {
+            ClassPathResource resource =
+                    new ClassPathResource(jsonPath + File.separator + jsonFile);
+
+            inputStream = resource.getInputStream();
+        }
+
+        try (inputStream) {
+            GoogleCredentials credentials =
+                    GoogleCredentials.fromStream(inputStream);
+
+            return StorageOptions.newBuilder()
+                    .setCredentials(credentials)
+                    .build()
+                    .getService();
         }
     }
-    
 }
