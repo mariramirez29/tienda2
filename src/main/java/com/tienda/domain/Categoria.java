@@ -1,12 +1,14 @@
 package com.tienda.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import jakarta.validation.constraints.NotNull;
@@ -37,4 +39,9 @@ public class Categoria implements Serializable {
     private String rutaImagen;
 
     private boolean activo;
+
+    // Relación de uno a muchos con la clase Producto
+    // Sin actualización en cascada
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos;
 }
