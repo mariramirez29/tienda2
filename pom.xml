@@ -135,6 +135,18 @@
             <version>9.9.0</version>
         </dependency>
 
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Thymeleaf Extras Spring Security -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -156,6 +168,7 @@
                         </exclude>
                     </excludes>
                 </configuration>
+
             </plugin>
 
             <!-- Compilador Maven -->
@@ -164,6 +177,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
 
                 <configuration>
+
                     <release>17</release>
 
                     <annotationProcessorPaths>
@@ -178,6 +192,7 @@
                     </compilerArgs>
 
                 </configuration>
+
             </plugin>
 
         </plugins>

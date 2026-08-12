@@ -21,18 +21,26 @@ import org.thymeleaf.templatemode.TemplateMode;
 public class ProjectConfig implements WebMvcConfigurer {
 
     /*
-     * Los siguientes métodos permiten relacionar una dirección
-     * con una vista del proyecto.
+     * Los siguientes métodos son para implementar
+     * el tema de seguridad dentro del proyecto.
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/ejemplo2").setViewName("ejemplo2");
-        registry.addViewController("/multimedia").setViewName("multimedia");
-        registry.addViewController("/iframes").setViewName("iframes");
-        registry.addViewController("/login").setViewName("login");
+
+        registry.addViewController("/")
+                .setViewName("index");
+
+        registry.addViewController("/acceso_denegado")
+                .setViewName("acceso_denegado");
+
+        registry.addViewController("/error")
+                .setViewName("error");
+
+        registry.addViewController("/login")
+                .setViewName("login");
+
         registry.addViewController("/registro/nuevo")
-                .setViewName("registro/nuevo");
+                .setViewName("/registro/nuevo");
     }
 
     /*
@@ -41,6 +49,7 @@ public class ProjectConfig implements WebMvcConfigurer {
      */
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
+
         SpringResourceTemplateResolver resolver =
                 new SpringResourceTemplateResolver();
 
@@ -59,6 +68,7 @@ public class ProjectConfig implements WebMvcConfigurer {
      */
     @Bean
     public LocaleResolver localeResolver() {
+
         var slr = new SessionLocaleResolver();
 
         slr.setDefaultLocale(Locale.getDefault());
@@ -74,6 +84,7 @@ public class ProjectConfig implements WebMvcConfigurer {
      */
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
+
         var lci = new LocaleChangeInterceptor();
 
         lci.setParamName("lang");
@@ -86,6 +97,7 @@ public class ProjectConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
+
         registro.addInterceptor(localeChangeInterceptor());
     }
 
@@ -95,6 +107,7 @@ public class ProjectConfig implements WebMvcConfigurer {
      */
     @Bean("messageSource")
     public MessageSource messageSource() {
+
         ResourceBundleMessageSource messageSource =
                 new ResourceBundleMessageSource();
 
